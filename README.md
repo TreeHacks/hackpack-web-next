@@ -16,6 +16,7 @@ Through *Now*
 https://pokeapi.co/
 
 ### License
+MIT
 
 # About HackPacks 🌲
 
