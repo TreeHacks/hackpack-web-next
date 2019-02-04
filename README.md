@@ -1,9 +1,20 @@
 # hackpack-web-next
 
-Write a website using React and Express using [Next](https://nextjs.org).
+Write a website using React and Express using [Next](https://nextjs.org) that creates a Pokedex.
 
 ## Getting started
-This hackpack is designed to get you up and running with making a website using React and Express. Next JS is a framework that allows you get started with React and server-side code quickly. It comes with built-in features like routing, server-side rendering, and code splitting which improve performance and might otherwise be a pain to implement yourself.
+This hackpack is designed to get you up and running with making a website using React and Express.
+
+### What is Next JS?
+Next JS is a framework that allows you get started with React and server-side code quickly. It comes with built-in features like routing, server-side rendering, and code splitting which improve performance and might otherwise be a pain to implement yourself.
+
+### Get started
+Clone this repository locally and install dependencies:
+```
+git clone https://github.com/TreeHacks/hackpack-web-next.git
+npm install
+```
+
 
 
 ### License
