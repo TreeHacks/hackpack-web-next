@@ -1,6 +1,9 @@
 import React from 'react'
 import fetch from 'isomorphic-unfetch'
-import Select from 'react-select'
+import Select, { components } from 'react-select'
+import { get } from 'http';
+
+
 
 export default class extends React.Component {
     static async getInitialProps({ req }) {
@@ -13,16 +16,46 @@ export default class extends React.Component {
         // }
         // list = await Promise.all(pokemonPromises);
         // console.log(list[0]);
-        return { pokemonList: pokemonNames.map(e => ({label: e.name, value: e.url}) ) }
+        return { pokemonList: pokemonNames.map(e => ({ label: e.name, value: e.url })) }
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: {}
+        }
     }
 
     render() {
+        const MultiValueLabel = (props) => {
+            let url = props.data.value;
+            let imgUrl = this.state[url];
+            if (!imgUrl) {
+                let get = async () => {
+                    let data = await fetch(url);
+                    data = await data.json();
+                    imgUrl = data.sprites.back_default;
+                    this.setState({
+                        [url]: imgUrl
+                    });
+                }
+                get();
+            }
+            return (
+                <div>
+                    <components.MultiValueLabel {...props} />
+                    <img src={imgUrl} />
+                </div>
+            );
+        };
         return (
             <div>
                 <Select
                     closeMenuOnSelect={false}
                     defaultValue={[]}
                     isMulti
+                    components={{ MultiValueLabel }}
+                    //     styles={{ multiValueLabel: (base) => ({ ...base, backgroundColor: colourOptions[2].color, color: 'white' }) }}
                     options={this.props.pokemonList}
                 />
                 Hello World
