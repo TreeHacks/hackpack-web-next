@@ -3,10 +3,10 @@
 Write a website using React and Express using [Next](https://nextjs.org) that creates a Pokedex.
 
 ## Getting started
-This hackpack is designed to get you up and running with making a website using React and Express.
+This hackpack is designed to get you up and running with making a website using React and Express. You will make a site that grabs data from the [PokéApi](https://pokeapi.co/) and allows users to create their own Pokédex!
 
 ### What is Next JS?
-Next JS is a framework that allows you get started with React and server-side code quickly. It comes with built-in features like routing, server-side rendering, and code splitting which improve performance and might otherwise be a pain to implement yourself.
+Next JS is a framework that allows you get started with React and server-side code quickly. It comes with built-in features like routing, hot module replacement, server-side rendering, and code splitting which improve performance and might otherwise be a **huge** pain to implement yourself.
 
 ### Get started
 Clone this repository locally and install dependencies:
@@ -14,8 +14,18 @@ Clone this repository locally and install dependencies:
 git clone https://github.com/TreeHacks/hackpack-web-next.git
 npm install
 ```
+To start, run the following:
+```
+npm start
+```
+
+You can open the website if you go to http://localhost:3000. Note that now, the terminal will watch for changes in your code and automatically recompile your code and also . Try changing some text in `pages/index.js` and the site should immediately change. This is called [Hot Module Replacement (HMR)](https://webpack.js.org/concepts/hot-module-replacement/)!
 
 
+### Ideas for improvements
+- We are just using local storage to store our data (this means that if someone clears their cache or uses another browser then their current Pokédex will be reset :cry: ). Can you use a database such as MongoDB instead
+- Can you add an accounts system with authentication? Maybe even a "sign in with Google" or a "sign in with Facebook" feature?
+- [Deploy this app](https://github.com/zeit/next.js/wiki/Deploying-a-Next.js-app-into-GitHub-Pages) to Github pages!
 
 ### License
 MIT
