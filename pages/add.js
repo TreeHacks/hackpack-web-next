@@ -10,33 +10,32 @@ export default class extends React.Component {
         let response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=964");
         response = await response.json();
         let pokemonNames = response.results;
-        // let pokemonPromises = [];
-        // for (let pokemon of list) {
-        //     pokemonPromises.push(fetch(pokemon.url).then(e => e.json()));
-        // }
-        // list = await Promise.all(pokemonPromises);
-        // console.log(list[0]);
-        return { pokemonList: pokemonNames.map(e => ({ label: e.name, value: e.url })) }
+        let pokemonList = pokemonNames.map(e => ({ label: e.name, value: e.url }));
+        return { pokemonList: pokemonList }
     }
 
     constructor(props) {
         super(props);
-        this.state = {
-            data: {}
-        }
+        this.state = { data: {}, images: {}, value: [] };
+    }
+    onChange(value) {
+        this.setState({value: value});
     }
 
     render() {
         const MultiValueLabel = (props) => {
             let url = props.data.value;
-            let imgUrl = this.state[url];
+            let imgUrl = this.state.images[url];
             if (!imgUrl) {
                 let get = async () => {
                     let data = await fetch(url);
                     data = await data.json();
                     imgUrl = data.sprites.back_default;
                     this.setState({
-                        [url]: imgUrl
+                        images: {
+                            ...this.state.images,
+                            [url]: imgUrl
+                        }
                     });
                 }
                 get();
@@ -54,6 +53,8 @@ export default class extends React.Component {
                     closeMenuOnSelect={false}
                     defaultValue={[]}
                     isMulti
+                    value={this.state.value}
+                    onChange={e => this.onChange(e)}
                     components={{ MultiValueLabel }}
                     //     styles={{ multiValueLabel: (base) => ({ ...base, backgroundColor: colourOptions[2].color, color: 'white' }) }}
                     options={this.props.pokemonList}
