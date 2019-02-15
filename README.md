@@ -21,11 +21,14 @@ npm start
 
 You can open the website if you go to http://localhost:3000. Note that now, the terminal will watch for changes in your code and automatically recompile your code and also . Try changing some text in `pages/index.js` and the site should immediately change. This is called [Hot Module Replacement (HMR)](https://webpack.js.org/concepts/hot-module-replacement/)!
 
+![image](https://user-images.githubusercontent.com/1689183/52835583-e0bc1f00-309b-11e9-8c2e-e067bd5290d4.png)
+
 
 ### Ideas for improvements
-- We are just using local storage to store our data (this means that if someone clears their cache or uses another browser then their current Pokédex will be reset :cry: ). Can you use a database such as MongoDB instead
+- We are just storing the data temporarily, so when the user refreshes the page their Pokémon are gone! Can you use a database such as MongoDB instead
 - Can you add an accounts system with authentication? Maybe even a "sign in with Google" or a "sign in with Facebook" feature?
 - [Deploy this app](https://github.com/zeit/next.js/wiki/Deploying-a-Next.js-app-into-GitHub-Pages) to Github pages!
+- Feel free to make a PR with any additional improvements!
 
 ### License
 MIT
